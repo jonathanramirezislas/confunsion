@@ -23,11 +23,12 @@ class DishDetail extends Component {
                 <div></div>
             );
     }
-    renderComments(array) {
+    renderComments(array) { /* Array contains all the comnets of the dish selected*/
         if (array.length != 0) {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
+                    {/*iTERATE EACH ELEMENT WITH MAP FUCTION */}
                     {array.map(comment => (
                         <ul className="list-unstyled">
                             <li>

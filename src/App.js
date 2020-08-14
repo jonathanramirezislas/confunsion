@@ -11,6 +11,7 @@ import { DISHES } from './shared/dishes';
 class App extends Component {
   constructor(props) {
     super(props);
+    /* Al entrar tarera todos los dishes del archov dishes.js*/
     this.state = {
       dishes: DISHES
     };
@@ -24,6 +25,7 @@ class App extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
+      {/* Cuado se renderice va a mandar todos el objeto de diches a MenuComponents.js*/}
         <Menu dishes={this.state.dishes} />
       </div>
     );
