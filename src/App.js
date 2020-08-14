@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 //importamos reactstrap
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/menuComponent';
+import Menu from './components/MenuComponent';
 //Importamo9s  the data .would be a better idea to create a api
 import { DISHES } from './shared/dishes';
 
