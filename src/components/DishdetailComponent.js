@@ -1,10 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
 import { Media } from "reactstrap";
 
-class DishDetails extends Component {
+function  RenderDish({dish}){
+    if(dish){
+        return (
+            
+                    <Card>
+                        <CardImg src={ dish.image } alt={ dish.name } width='100%'/>
+                        <CardBody>
+                            <CardTitle>{ dish.name }</CardTitle>
+                            <CardText>{ dish.description }</CardText>
+                        </CardBody>
+                    </Card>
+           
+        );
+    } else {
+        return (
+            <div></div>
+        )
+    }
+}
     
-    renderComments(comments){
+    function RenderComments({comments}){
 
         
         const listComments = comments.map(comment=> {
@@ -31,37 +49,25 @@ class DishDetails extends Component {
         }
     }
 
-    renderDish(dish){
-        if(dish){
+    const DishDetails = (props) =>{
+        if(props.dish){
             return (
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
-                        <Card>
-                            <CardImg src={ dish.image } alt={ dish.name } width='100%'/>
-                            <CardBody>
-                                <CardTitle>{ dish.name }</CardTitle>
-                                <CardText>{ dish.description }</CardText>
-                            </CardBody>
-                        </Card>
+                        <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(dish.comments)}
+                        <RenderComments comments={props.dish.comments} />
                     </div>
                 </div>
             );
-        } else {
-            return (
-                <div></div>
-            )
+
+    }else{
+        return(
+            <div></div>
+        );
         }
     }
-    render() {
-        return (
-            <div>
-                {this.renderDish(this.props.dish)}
-            </div>
-        );
-    }
-}
+ 
 
 export default DishDetails;
