@@ -21,9 +21,7 @@ class Main extends Component {
     onDishSelect(dishId) {
       //when user chooses a dish update state to "selectedDish to currebt dish"
       this.setState({ selectedDish: dishId })
-      // if(this.state.selectedDish){
-      //      console.log(this.state.selectedDish)
-      // }
+   console.log("DishId selected:",dishId);
   }  
 
   render() {
@@ -34,10 +32,16 @@ class Main extends Component {
                <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
            </div>
          </Navbar>
-
-         <Menu  dishes={this.state.dishes} 
-                   onClick={ (dishId) => this.onDishSelect(dishId)}/>
-         <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish )[0]} />
+          
+          {/** Send only the dishId as parameters to onDishSelect */}
+          <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />        
+          {/**
+           * filter() creates a new array with elements that fall under a given criteria from an existing array
+           * (dish) => dish.id === this.state.selectedDish this helps us to get dish is seleected with onDishSelect
+           *
+           * [0] get the firts element that matches with the criteria , but here doshId is unique
+          */}
+ <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />        
         </div>
       );
    }
