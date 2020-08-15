@@ -1,19 +1,17 @@
 import React from 'react'
 import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
-import { Media } from "reactstrap";
 
+//function components
 function  RenderDish({dish}){
     if(dish){
         return (
-            
                     <Card>
                         <CardImg src={ dish.image } alt={ dish.name } width='100%'/>
                         <CardBody>
                             <CardTitle>{ dish.name }</CardTitle>
                             <CardText>{ dish.description }</CardText>
                         </CardBody>
-                    </Card>
-           
+                    </Card>    
         );
     } else {
         return (
@@ -21,18 +19,15 @@ function  RenderDish({dish}){
         )
     }
 }
-    
-    function RenderComments({comments}){
 
-        
+
+    function RenderComments({comments}){
         const listComments = comments.map(comment=> {
             return (
                 <li key={comment.id}>
                     {comment.comment} <br/> -- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} <br/><br/>
                 </li>
             ); })
-
-
         if(comments){
             return (
                 <div>
@@ -61,7 +56,6 @@ function  RenderDish({dish}){
                     </div>
                 </div>
             );
-
     }else{
         return(
             <div></div>
