@@ -3,8 +3,10 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent' ;
 import DishDetail from './DishDetailComponent' ;
 import { DISHES } from '../shared/dishes' ;
-import Header from './HeaderComponent' ;
-import Footer from './FooterComponent' ;
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
+import Home from './HomeComponent';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 //function App() 
 class Main extends Component {
@@ -15,32 +17,32 @@ class Main extends Component {
       this.state = {
         // this dishes object will be passed child component "Menu"
         dishes: DISHES,
-        selectedDish: null
-      }
-
+  
+      };
     }
 
-    onDishSelect(dishId) {
-      //when user chooses a dish update state to "selectedDish to currebt dish"
-      this.setState({ selectedDish: dishId })
-   console.log("DishId selected:",dishId);
-  }  
-
+ 
   render() {
+
+
+      const HomePage = () => {
+        return(
+            <Home/> 
+            );
+      }
+
       return (
         <div>
           <Header/>
-          
-          {/** Send only the dishId as parameters to onDishSelect */}
-          <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />        
-          {/**
-           * filter() creates a new array with elements that fall under a given criteria from an existing array
-           * (dish) => dish.id === this.state.selectedDish this helps us to get dish is seleected with onDishSelect
-           *
-           * [0] get the firts element that matches with the criteria , but here doshId is unique
-          */}
-          <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />        
-        
+          <Switch>
+              {/** when you have localhost:300/home will redirect to HomePage=>Home */}
+              <Route path='/home' component={HomePage} />
+                                  {/**We will pass the dishes  to Menu */}
+              <Route exact path='/menu' component={() => 
+              <Menu dishes={this.state.dishes} />} />
+           
+            <Redirect to="/home" />
+          </Switch>
         <Footer/>
         </div>
       );
