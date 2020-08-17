@@ -1,22 +1,24 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay,
+    CardTitle } from 'reactstrap';
 
-
-  
-  //Functional components
-function RenderMenuItem({dish, onClick}) {
-    return(
-                     /**
+      /** Card ..
                     * we recbe from Main Component the props function  this.onDishSelect(dishId)
                     *  this.props.onClick(dish.id) call the function and send the dish.Id taht we click  */
      //   <Card key={dish.id} onClick={() => this.props.onClick(dish.id)}>
+
+
+  //Functional components
+function RenderMenuItem({dish, onClick}) {
+    return(
+                 
      <Card
-     onClick={() => onClick(dish.id)}>               
-        <CardImg width="100%" src={dish.image} alt={dish.name} />
-        <CardImgOverlay>
-            <CardTitle><strong>{dish.name}</strong></CardTitle>
-        </CardImgOverlay>
-    </Card>
+     onClick={() => onClick(dish.id)}>
+     <CardImg width="100%" src={dish.image} alt={dish.name} />
+     <CardImgOverlay>
+         <CardTitle>{dish.name}</CardTitle>
+     </CardImgOverlay>
+ </Card>
     );
 }
 
