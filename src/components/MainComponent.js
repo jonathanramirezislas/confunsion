@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import Menu from './MenuComponent' ;
-import DishDetail from './DishDetailComponent' ;
+
 import { DISHES } from '../shared/dishes' ;
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 
+import Menu from './MenuComponent' ;
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
+import DishDetail from './DishDetailComponent' ;
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -58,6 +60,16 @@ class Main extends Component {
       );
     };
 
+   
+    
+    const AboutPage = () => {
+      return(
+          <About  leaders={this.state.leaders} />
+      );
+    };
+
+
+
 
       return (
         <div>
@@ -66,11 +78,12 @@ class Main extends Component {
               {/** when you have localhost:300/home will redirect to HomePage=>Home */}
               <Route path='/home' component={HomePage} />
                                   {/**We will pass the dishes  to Menu */}
-             <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}  />} />
+              <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}  />} />
               <Route path='/menu/:dishId' component={DishWithId} />
               <Route exact path='/contactus' component={Contact}  />
+              <Route exact path='/aboutus'  component={AboutPage}  />
               <Redirect to="/home" />
-            <Redirect to="/home" />
+          
           </Switch>
         <Footer/>
         </div>
