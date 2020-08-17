@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent' ;
 import DishDetail from './DishDetailComponent' ;
 import { DISHES } from '../shared/dishes' ;
@@ -34,7 +33,7 @@ class Main extends Component {
   render() {
 
 /**
- * dish.featured is True will return objets of dishes but we will pass only one using dish.featured)[0]
+ * dish.featured is True will return objets of dishes but we will pass only first element using dish.featured)[0]
  * 
  */
     const HomePage = () => {
@@ -46,7 +45,20 @@ class Main extends Component {
           />
       );
     }
-    
+    /**
+     * match.params.dishId,10)  , (,10) is the base 0,1,2,3..9
+     * [0] first element 
+     *  comments={this.state.c .... will extract all the comments match with DishId
+     */
+
+    const DishWithId = ({match}) => {
+      return(
+          <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+            comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+      );
+    };
+
+
       return (
         <div>
           <Header/>
@@ -55,8 +67,8 @@ class Main extends Component {
               <Route path='/home' component={HomePage} />
                                   {/**We will pass the dishes  to Menu */}
              <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}  />} />
-             <Route exact path='/contactus' component={Contact}  />
-
+              <Route path='/menu/:dishId' component={DishWithId} />
+              <Route exact path='/contactus' component={Contact}  />
               <Redirect to="/home" />
             <Redirect to="/home" />
           </Switch>
