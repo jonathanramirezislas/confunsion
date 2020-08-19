@@ -100,5 +100,6 @@ class Main extends Component {
    }
 }
 
-
+/*withRouter() to inject params provided by React Router into connected components 
+deep in the tree without passing them down all the way down as props */
 export default withRouter(connect(mapStateToProps)(Main));
