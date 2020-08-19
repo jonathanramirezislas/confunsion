@@ -23,7 +23,25 @@ class Contact extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
-    }           
+    }    
+    
+    /**
+ * 
+Concepts 
+El uso más simple de bind() es hacer que una función que, sin importar cómo es llamada, 
+siempre apunte al mismo objeto con la referencia this. Un error común para nuevos programadores
+    de JavaScript es que obtienen una referencia a un método de un objeto,
+    posteriormente ejecutan ese método desde la referencia externa y esperan que la referencia de 
+    this siga apuntando al objeto original de donde se obtuvo el método (v.g. cuando
+    se usa ese método en un callback). Sin el debido cuidado, el objeto original es comúnmente perdido. 
+    Creando una función ligada desde la función  empleando el objeto original, resuelve limpiamente este problema
+   
+   
+<FormFeedback>{errors.firstname}</FormFeedback>
+Ayudara a mostrar los errores que contenga errors.firtsname
+
+onBlur =Every time you get out of focus from the input field, the event will trigger.
+ */
 
     handleInputChange(event) {
         const target = event.target;
@@ -35,6 +53,7 @@ class Contact extends Component {
         });
     }
 
+    //Saber cuando un campo es manipulado
     handleBlur = (field) => (evt) => {
         this.setState({
             touched: { ...this.state.touched, [field]: true }
@@ -92,8 +111,8 @@ class Contact extends Component {
                             Aguascalientes<br />
                             
                             Mexico<br />
-                            <i className="fa fa-phone"></i>: +852 1234 5678<br />
-                            <i className="fa fa-fax"></i>: +852 8765 4321<br />
+                            <i className="fa fa-phone"></i>: 449 1234 5678<br />
+                            <i className="fa fa-fax"></i>: 449 8765 4321<br />
                             <i className="fa fa-envelope"></i>: <a href="mailto:jonathan@jonathanramirezislas.com.mx">jonathan@jonathanramirezislas.com.mx</a>
                             </address>
                     </div>
@@ -104,7 +123,7 @@ class Contact extends Component {
                         <div className="btn-group" role="group">
                             <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
                             <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
-                            <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
+                            <a role="button" className="btn btn-success" href="mailto:jonathan@jonathanramirezislas.com.mx"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
                     </div>
                 </div>
@@ -124,6 +143,7 @@ class Contact extends Component {
                                         invalid={errors.firstname !== ''}
                                         onBlur={this.handleBlur('firstname')}
                                         onChange={this.handleInputChange} />
+
                                     <FormFeedback>{errors.firstname}</FormFeedback>
                                 </Col>
                             </FormGroup>
