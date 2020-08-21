@@ -16,6 +16,8 @@ import DishDetail from './DishDetailComponent' ;
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
+import { addComment } from '../redux/ActionCreators';
+
 
 /***Get state from redux  */
 const mapStateToProps = state => {
@@ -26,6 +28,12 @@ const mapStateToProps = state => {
     leaders: state.leaders
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+//object      parameteres                         //dispatch the action to add coments
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+
+});
 
 //function App() 
 class Main extends Component {
@@ -64,10 +72,13 @@ class Main extends Component {
 
     const DishWithId = ({match}) => {
       return(
-          <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
-            comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+
+      <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]}
+      comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
+      addComment={this.props.addComment}
+    />
       );
-    };
+    }
    
     
     const AboutPage = () => {
@@ -102,4 +113,4 @@ class Main extends Component {
 
 /*withRouter() to inject params provided by React Router into connected components 
 deep in the tree without passing them down all the way down as props */
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
