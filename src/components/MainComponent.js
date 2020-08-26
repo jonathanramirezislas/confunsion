@@ -7,11 +7,10 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishDetailComponent' ;
-
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-
 import { addComment, fetchDishes } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
 
 
 /***Get state from redux  */
@@ -33,7 +32,11 @@ const mapDispatchToProps = dispatch => ({
   so will availble in the Main(function app)
   
   */
-  fetchDishes: () => { dispatch(fetchDishes())}
+  fetchDishes: () => { dispatch(fetchDishes())},
+
+    //the form named as feedback reset with this function
+  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))}
+
 
 });
 
@@ -115,7 +118,10 @@ const HomePage = () => {
               <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
               <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}  />} />
               <Route path='/menu/:dishId' component={DishWithId} />
-              <Route exact path='/contactus' component={Contact}  />
+
+              <Route exact path='/contactus' component={() => <Contact resetFeedbackForm=
+              {this.props.resetFeedbackForm} />} />
+
               <Route exact path='/aboutus'  component={AboutPage}  />
               <Redirect to="/home" />
           
