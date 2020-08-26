@@ -5,7 +5,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 
-                           //return a fuction   
+                            //return a fuction   
 export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading(true));
@@ -13,10 +13,23 @@ export const fetchDishes = () => (dispatch) => {
     // put the dishes in our store
     //WITH fetch comunication to the server
     return fetch(baseUrl + 'dishes')
+    .then(response => {
+      if (response.ok) {//if we get the data correctly 
+                //this response will pass to the next .the() #line 30
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;//to execute .catch
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;//to execute .catch
+      })
     .then(response => response.json())
-    .then(dishes => dispatch(addDishes(dishes)));//we dispatch the funcyion that is down
-        
-  
+    .then(dishes => dispatch(addDishes(dishes)))
+    .catch(error => dispatch(dishesFailed(error.message)));
 }
 
 export const dishesLoading = () => ({
@@ -32,11 +45,25 @@ export const addDishes = (dishes) => ({
     type: ActionTypes.ADD_DISHES,
     payload: dishes
 });
-
+//fetch coments
 export const fetchComments = () => (dispatch) => {    
     return fetch(baseUrl + 'comments')
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+      })
     .then(response => response.json())
-    .then(comments => dispatch(addComments(comments)));
+    .then(comments => dispatch(addComments(comments)))
+    .catch(error => dispatch(commentsFailed(error.message)));
 };
 
 
@@ -55,8 +82,22 @@ export const fetchPromos = () => (dispatch) => {
     dispatch(promosLoading());
 
     return fetch(baseUrl + 'promotions')
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+      })
     .then(response => response.json())
-    .then(promos => dispatch(addPromos(promos)));
+    .then(promos => dispatch(addPromos(promos)))
+    .catch(error => dispatch(promosFailed(error.message)));
 }
 
 export const promosLoading = () => ({
