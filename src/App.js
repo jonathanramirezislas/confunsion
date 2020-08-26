@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
 
+//Contain the data
 const store = ConfigureStore();
 
 
@@ -12,7 +13,7 @@ class App extends Component {
  
   
   render() {
-    {/**Store will be disponible en toda la app */}
+    {/**Store will be available in all in all app*/}
     return (
       <Provider store={store}>
       <BrowserRouter>

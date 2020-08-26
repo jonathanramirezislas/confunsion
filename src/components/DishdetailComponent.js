@@ -4,6 +4,7 @@ import { Card, CardImg, CardText, CardBody,
          ModalBody, ModalFooter, Row, Label, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from "react-redux-form";
+import { Loading } from './LoadingComponent';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -34,8 +35,8 @@ class CommentForm extends Component{
 
         */
        this.toggle();
+       //this fuction is that we get from props and is located in actioncreators.js (redux)
        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
-
 
     }
 
@@ -143,7 +144,7 @@ function RenderComments({comments, addComment, dishId}) {
                     <ul className="list-unstyled">
                         {listComments}
                     </ul> 
-
+                                {/* parmas = DishId and the function to add commmets          */}
                     <CommentForm dishId={dishId} addComment={addComment} />
 
                 </div>
@@ -156,7 +157,26 @@ function RenderComments({comments, addComment, dishId}) {
     }
 
     const DishDetails = (props) =>{
-        if(props.dish){
+
+        if (props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else if (props.dish != null) {
             return (
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
