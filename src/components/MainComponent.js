@@ -124,9 +124,11 @@ classNames="page will take the classes from APP.css
 */
       return (
         <div>
+           <Header/>
           <TransitionGroup>
             <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
               <Switch location={this.props.location}>
+
               {/** when you have localhost:300/home will redirect to HomePage (Home) */}
               <Route path='/home' component={HomePage} />
                                   {/**We will pass the dishes  to Menu */}
