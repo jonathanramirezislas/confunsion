@@ -15,11 +15,12 @@ export const Comments = (state = { errMess: null, comments:[]}, action) => {
   
       case ActionTypes.COMMENTS_FAILED:
         return {...state, errMess: action.payload};
-  
+        /*only when the server response.ok (adding the 
+            new comment on the server side)  then we 
+            we added to our  redux store (contaisn the javascript object with the comments)
+        */
       case ActionTypes.ADD_COMMENT:
           var comment = action.payload;
-          comment.id = state.comments.length;
-          comment.date = new Date().toISOString();
           return { ...state, comments: state.comments.concat(comment)};
   
       default:

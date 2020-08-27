@@ -10,7 +10,8 @@ import DishDetail from './DishDetailComponent' ;
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 /***Get state from redux  */
 const mapStateToProps = state => {
@@ -24,7 +25,7 @@ const mapStateToProps = state => {
                         //parameter
 const mapDispatchToProps = dispatch => ({
 //object      parameteres                         //dispatch the action to add coments (ActionCrators)
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
   
   /*
   fetchDishes is a thunk and we will dispatch it
@@ -99,7 +100,7 @@ const HomePage = () => {
           errMess={this.props.dishes.errMess}
           comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
           commentsErrMess={this.props.comments.errMess}
-          addComment={this.props.addComment}
+          postComment={this.props.postComment}
         />
     );
   };
@@ -114,11 +115,18 @@ const HomePage = () => {
 
 
 
+/*{this.props.location.key} 
+CSSTransition :
+    Applies a pair of class names during the appear, enter and exit stages of the transition
+    Uses the in prop to decide when to apply the transitions classes
+classNames="page will take the classes from APP.css
 
+*/
       return (
         <div>
-          <Header/>
-          <Switch>
+          <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+              <Switch location={this.props.location}>
               {/** when you have localhost:300/home will redirect to HomePage (Home) */}
               <Route path='/home' component={HomePage} />
                                   {/**We will pass the dishes  to Menu */}
@@ -132,7 +140,9 @@ const HomePage = () => {
               <Route exact path='/aboutus'  component={AboutPage}  />
               <Redirect to="/home" />
           
-          </Switch>
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
         <Footer/>
         </div>
       );

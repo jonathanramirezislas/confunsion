@@ -37,8 +37,7 @@ class CommentForm extends Component{
         */
        this.toggle();
        //this fuction is that we get from props and is located in actioncreators.js (redux)
-       this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
-
+       this.props.postComment(this.props.dishId, values.rating, values.author, values.message);
     }
 
     render() {
@@ -130,7 +129,7 @@ function  RenderDish({dish}){
     }
 }
 
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({comments, postComment, dishId}) {
 
         const listComments = comments.map(comment=> {
             return (
@@ -145,9 +144,8 @@ function RenderComments({comments, addComment, dishId}) {
                     <ul className="list-unstyled">
                         {listComments}
                     </ul> 
-                                {/* parmas = DishId and the function to add commmets          */}
-                    <CommentForm dishId={dishId} addComment={addComment} />
-
+                                {/* parmas = DishId and the function to post commmets          */}
+                    <CommentForm dishId={dishId} postComment={postComment} />
                 </div>
             );   
         } else {
@@ -197,7 +195,7 @@ function RenderComments({comments, addComment, dishId}) {
                         </div>
                         <div className="col-12 col-md-5 m-1">
                             <RenderComments comments={props.comments} 
-                            addComment={props.addComment}
+                            postComment={props.postComment}
                             dishId={props.dish.id}
                             />
                         </div>
