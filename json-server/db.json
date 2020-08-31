@@ -201,6 +201,71 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 0,
+      "rating": "3",
+      "author": "jona",
+      "comment": "commentario1",
+      "date": "2020-08-27T00:40:50.416Z",
+      "id": 20
+    },
+    {
+      "dishId": 0,
+      "author": "jona",
+      "comment": "commentario2",
+      "date": "2020-08-27T00:41:32.025Z",
+      "id": 21
+    },
+    {
+      "dishId": 0,
+      "author": "ddd",
+      "comment": "commentario3",
+      "date": "2020-08-27T00:49:36.486Z",
+      "id": 22
+    },
+    {
+      "dishId": 0,
+      "author": "jaun",
+      "comment": "commentario4",
+      "date": "2020-08-27T00:57:22.094Z",
+      "id": 23
+    },
+    {
+      "dishId": 0,
+      "author": "lol",
+      "comment": "commentario5",
+      "date": "2020-08-27T00:58:42.540Z",
+      "id": 24
+    },
+    {
+      "dishId": 0,
+      "author": "dfd",
+      "comment": "commentario6",
+      "date": "2020-08-27T01:03:49.538Z",
+      "id": 25
+    },
+    {
+      "dishId": 1,
+      "author": "sss",
+      "comment": "commentario7",
+      "date": "2020-08-27T01:13:55.999Z",
+      "id": 26
+    },
+    {
+      "dishId": 0,
+      "rating": "2",
+      "author": "juan",
+      "comment": "commentario8",
+      "date": "2020-08-27T01:17:14.748Z",
+      "id": 27
+    },
+    {
+      "dishId": 0,
+      "author": "dsd",
+      "comment": "GOOD",
+      "date": "2020-08-27T01:19:24.010Z",
+      "id": 28
     }
   ],
   "promotions": [
@@ -217,8 +282,8 @@
   "leaders": [
     {
       "id": 0,
-      "name": "Peter Pan",
-      "image": "images/alberto.png",
+      "name": "Alberto Martinez",
+      "image": "images/alberto.jpg",
       "designation": "Chief Epicurious Officer",
       "abbr": "CEO",
       "featured": false,
@@ -226,17 +291,17 @@
     },
     {
       "id": 1,
-      "name": "Dhanasekaran Witherspoon",
-      "image": "images/alberto.png",
+      "name": "Alejandra Morquecho",
+      "image": "images/alejandra.jpg",
       "designation": "Chief Food Officer",
       "abbr": "CFO",
       "featured": false,
-      "description": "Our CFO, Danny, as he is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. His experiences growing up on a farm in the Australian outback gave him great appreciation for varieties of food sources. As he puts it in his own words, Everything that runs, wins, and everything that stays, pays!"
+      "description": "Our CFO, Alejandra, as she is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. His experiences growing up on a farm in the Australian outback gave him great appreciation for varieties of food sources. As he puts it in his own words, Everything that runs, wins, and everything that stays, pays!"
     },
     {
       "id": 2,
-      "name": "Agumbe Tang",
-      "image": "images/alberto.png",
+      "name": "Juan Marquez",
+      "image": "images/juan.jpg",
       "designation": "Chief Taste Officer",
       "abbr": "CTO",
       "featured": false,
@@ -245,7 +310,7 @@
     {
       "id": 3,
       "name": "Alberto Somayya",
-      "image": "images/alberto.png",
+      "image": "images/jonathan.png",
       "designation": "Executive Chef",
       "abbr": "EC",
       "featured": true,
@@ -263,6 +328,36 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "jonathan",
+      "lastname": "ram",
+      "telnum": "545454",
+      "email": "jona@gmail.com",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "Test",
+      "id": 2
+    },
+    {
+      "firstname": "jona",
+      "lastname": "ramirez",
+      "telnum": "261",
+      "email": "jona@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "test 2",
+      "id": 3
+    },
+    {
+      "firstname": "juan",
+      "lastname": "ram",
+      "telnum": "854884",
+      "email": "juan@gmai.cdf",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "test 3",
+      "id": 4
     }
   ]
 }
