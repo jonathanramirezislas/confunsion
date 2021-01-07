@@ -185,8 +185,12 @@ classNames="page will take the classes from APP.css
 }
 
 /*withRouter() to inject params provided by React Router into connected components 
-deep in the tree without passing them down all the way down as props 
+deep in the tree without passing them down all the way down as props (BOM : history,location, etc)
 
-mapStateToProps  mapDispatchToProps functions that will be available in maincomponent
+
+The "connect()" function connects a React component to a Redux store
+The mapStateToProps and mapDispatchToProps deals with your 
+Redux store’s state and dispatch, respectively.
+
 */
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
