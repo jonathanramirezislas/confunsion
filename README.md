@@ -1,8 +1,7 @@
 
 # Confunsion Restaurant
-    <img src="https://img.shields.io/coveralls/github/badges/shields"
-            alt="coverage"></a>
-   
+
+![Full Stack](https://github.com/jonathanramirezislas/jonathanramirezislas/blob/main/coding.gif)
 
 ![Confunsion](https://res.cloudinary.com/djuqxjkh3/image/upload/v1611805013/Confunsion/RestaurantApp_d86cit.gif)
 
