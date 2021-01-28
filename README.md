@@ -1,5 +1,8 @@
 
-# Confunsion Restaurant ![Status badge](https://img.shields.io/badge/status-in%100progress-green)
+# Confunsion Restaurant
+    <img src="https://img.shields.io/coveralls/github/badges/shields"
+            alt="coverage"></a>
+   
 
 ![Confunsion](https://res.cloudinary.com/djuqxjkh3/image/upload/v1611805013/Confunsion/RestaurantApp_d86cit.gif)
 
@@ -57,6 +60,9 @@ The MIT License (MIT)
 ## Contributing
 
 You're free to contribute to this project by submitting [issues](https://github.com/jonathanramirezislas/confunsion/issues) and/or [pull requests](hhttps://github.com/jonathanramirezislas/confunsion/pulls).
+
+
+
 
 
 
