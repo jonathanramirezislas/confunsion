@@ -1,9 +1,7 @@
 
 # Confunsion Restaurant
 
-![Full Stack](https://github.com/jonathanramirezislas/jonathanramirezislas/blob/main/coding.gif)
-
-![Confunsion](https://res.cloudinary.com/djuqxjkh3/image/upload/v1611805013/Confunsion/RestaurantApp_d86cit.gif)
+![Confunsion](https://res.cloudinary.com/djuqxjkh3/image/upload/v1611807013/Confunsion/RestaurantApp_1_ep2vpk.gif)
 
 Confunsion is a project for restaurants.
 
